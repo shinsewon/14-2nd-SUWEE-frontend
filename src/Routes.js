@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './Pages/Login/Login';
 
 class Routes extends Component {
   render() {
@@ -7,7 +8,7 @@ class Routes extends Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <Route exact path="/" component={} />
+            <Route exact path="/" component={Login} />
           </Switch>
         </Router>
       </React.Fragment>

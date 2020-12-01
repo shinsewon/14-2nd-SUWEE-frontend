@@ -6,24 +6,39 @@ const GlobalStyle = createGlobalStyle`
 
   ${reset}
 
-  body{
-    box-sizing: border-box;
+  *{
+        box-sizing:border-box;
+    }
+    body{
+        font-size:14px;
+        background-color:rgba(20,20,20,0.5);
+        box-sizing: border-box;
     font-family: 'Noto Sans KR', 'Noto Serif KR', 'sans-serif', 'serif';
+    }
+    a{
+        text-decoration:none;
+        color:inherit;
+        cursor: pointer;
+    }
+    ol, ul, li {
+        list-style: none;
+    }
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    input, button {
+        background-color: transparent;
+    }
+    h1, h2, h3, h4, h5, h6 {
+    font-family:'Maven Pro', sans-serif;
   }
 
-  * {
-    box-sizing: border-box;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  button,
-  input {
-    outline: none;
-    border: none;
-  }
+
+
+
+
 `;
 
 export default GlobalStyle;
