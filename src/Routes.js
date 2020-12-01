@@ -8,7 +8,11 @@ class Routes extends Component {
       <React.Fragment>
         <Router>
           <Switch>
+<<<<<<< HEAD
             <Route exact path='/' component={Login} />
+=======
+            <Route exact path="/" component={Login} />
+>>>>>>> 37e8c02... [로그인]
           </Switch>
         </Router>
       </React.Fragment>
