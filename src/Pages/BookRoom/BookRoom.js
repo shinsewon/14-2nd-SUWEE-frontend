@@ -1,8 +1,10 @@
-import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import Nav from './../../Components/Nav/Nav';
 import Footer from './../../Components/Footer/Footer';
 import BookRoomTab from './../BookRoom/BookRoomTab/BookRoomTab';
+import styled from 'styled-components';
 
 const BookRoom = () => {
   return (

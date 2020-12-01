@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BsCheckBox } from 'react-icons/bs';
+import { TODAYBOOK_API } from '../../../config';
 import './TodaysBook.scss';
 
 const TodaysBook = () => {
+  const [todaysBook, setTodaysBook] = useState([]);
+
+  useEffect(() => {
+    fetch(TODAYBOOK_API)
+      .then((res) => res.json())
+      .then((res) => {
+        setTodaysBook(res.todayBook);
+      })
+      .catch((err) => console.log('Catched errors!!', err));
+  }, []);
+  console.log(todaysBook[0]);
   return (
     <TodaysBookContainer>
       <div className='subject'>오늘의 책</div>
       <SectionGroup width='100%'>
         <div className='leftSide'>
           <div className='leftSideContainer'>
-            <img
-              src='https://img.millie.co.kr/400x/service/cover/37778329/b7392f7b916948028fce790b1f1ce6a0.jpg'
-              alt=''
-            />
+            <img src={todaysBook[0] && todaysBook[0].image} alt='오늘의 책' />
             <div className='leftSideText'>
-              <p>참 소중한 너라서</p>
-              <p>김지훈</p>
+              <p>{todaysBook[0] && todaysBook[0].title}</p>
+              <p>{todaysBook[0] && todaysBook[0].author}</p>
             </div>
           </div>
         </div>
@@ -24,12 +34,12 @@ const TodaysBook = () => {
           <div className='rightUpSide'>
             <span>
               <BsCheckBox />
-              &nbsp; "너에게 주는 위로" >{' '}
+              &nbsp; "나도 이제 디지털 노마드" >{' '}
             </span>{' '}
             &nbsp;&nbsp;{' '}
             <span>
               <BsCheckBox />
-              &nbsp; 술술 읽다 보면 어느새 위로 받는 책 >
+              &nbsp; {todaysBook[0] && todaysBook[0].reviewContent} >
             </span>
             <span>
               <BsCheckBox />
@@ -38,16 +48,16 @@ const TodaysBook = () => {
           </div>
           <div className='rightDownSide'>
             <div className='userProfile'>
-              <img src='./images/profile.png' alt='' />
+              <img src={todaysBook[0] && todaysBook[0].reviewerImage} alt='' />
               <div className='userInfo'>
-                <Comment>ryuwisdom의 추천평</Comment>
+                <Comment>
+                  {todaysBook[0] && todaysBook[0].reviewerName}의 추천평
+                </Comment>
                 <Description>한 줄 소개말</Description>
               </div>
             </div>
             <div className='BestReview'>
-              <p>
-                "있는 그대로 참 소중한 당신에게 전하는 진심 가득한 위로의 말"
-              </p>
+              <p>{todaysBook[0] && todaysBook[0].description}</p>
             </div>
           </div>
         </div>

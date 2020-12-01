@@ -24,13 +24,19 @@ const MainImageCarousel = () => {
         {CAROUSEL_DATA.map((carouselData) => (
           <div key={carouselData.id} className='imageContainer'>
             <img src={carouselData.imageUrl} alt='pointImage' />
-            <div className='textContainer'>
-              <div className='largeText'>
+            <div className={`textContainer `}>
+              <div
+                className={`largeText ${
+                  carouselData.isDark ? 'whiteText' : ''
+                }`}>
                 {carouselData.title.map((title, idx) => (
                   <p key={idx}>{title}</p>
                 ))}
               </div>
-              <div className='smallText'>
+              <div
+                className={`smallText ${
+                  carouselData.isDark ? 'whiteText' : ''
+                }`}>
                 {carouselData.context.map((context, idx) => (
                   <p key={idx}>{context}</p>
                 ))}

@@ -7,22 +7,31 @@ const Statistic = () => {
   const [statistic, setStatistic] = useState(0);
 
   useEffect(() => {
-    fetch(BOOKROOM_STATISTIC_API)
+    fetch(BOOKROOM_STATISTIC_API, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then((res) => res.json())
       .then((res) => {
-        // headers: { authorization: localStorage.getItem('token') },
         setStatistic(res.data);
       })
       .catch((err) => console.log('Catched errors!!', err));
   }, []);
-
+  console.log(statistic);
   return (
     <StatisticContainer>
       <Layout>
         <Title>12월</Title>
         <Grouping>
-          <Record>{statistic.total_book_count}권</Record>
-          <Record>독서시간 : {statistic.total_read_time}</Record>
+          <Record>
+            {statistic.total_book_count}
+            <br />권
+          </Record>
+          <Record>
+            {' '}
+            {statistic.total_read_time}
+            <br />
+            독서시간
+          </Record>
         </Grouping>
         <RecommendBook>
           <Author>Suwee의 추천 도서</Author>
@@ -117,7 +126,8 @@ const Title = styled.div`
 const Author = styled.div`
   /* width: 145px; */
   height: 20px;
-  font-size: 12px;
+  font-size: 20px;
+  font-weight: 700;
   margin-top: 8px;
   color: #909090;
 `;
