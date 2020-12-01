@@ -11,28 +11,31 @@ const PickedBooks = () => {
 
   const history = useHistory();
 
-  const handleClick = () => {
-    history.push(`/detail/${this.props.product.id}`);
-  };
+  // const handleClick = () => {
+  //   history.push(`/detail/${this.props.product.id}`);
+  // };
 
   function changeSorting(id) {
     setOrdering(id);
   }
 
   useEffect(() => {
-    fetch(`${BOOKROOM_BOOKLIST_API}&ordering=${ordering}`)
+    fetch(`${BOOKROOM_BOOKLIST_API}?ordering=${ordering}`, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then((res) => res.json())
       .then((res) => {
-        setPickedBooks(res.bookroom);
+        setPickedBooks(res.libraryBook);
       })
       .catch((err) => console.log('Catched errors!!', err));
   }, [ordering]);
 
+  console.log(pickedBooks && pickedBooks);
   return (
     <PickedBooksContainer>
       <Slide width='1240px'>
         <NavTab>
-          <Category>{pickedBooks.length}권의 책</Category>
+          <Category>{pickedBooks && pickedBooks.length}권의 책</Category>
           <SubCategory>
             <ul>
               {Data.BOOKROOM_SUBCATEGORY_DATA.map((tag) => (
@@ -48,15 +51,19 @@ const PickedBooks = () => {
         </NavTab>
 
         <SlideWrapper>
-          {pickedBooks.map((tag, idx) => {
-            return (
-              <Item key={idx} onClick={handleClick}>
-                <img src={tag.image} alt='책' />
-                <Title>{tag.title}</Title>
-                <Author>{tag.author}</Author>
-              </Item>
-            );
-          })}
+          {pickedBooks &&
+            pickedBooks.map((tag, idx) => {
+              return (
+                <Item
+                  key={idx}
+                  // onClick={handleClick}
+                >
+                  <img src={tag.image} alt='책' />
+                  <Title>{tag.title}</Title>
+                  <Author>{tag.author}</Author>
+                </Item>
+              );
+            })}
         </SlideWrapper>
       </Slide>
     </PickedBooksContainer>
@@ -125,7 +132,7 @@ const SlideWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: -20px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   &::-webkit-scrollbar {
     visibility: hidden;
   }

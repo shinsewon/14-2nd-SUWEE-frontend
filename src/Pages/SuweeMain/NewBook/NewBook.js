@@ -70,7 +70,7 @@ const SlideWrapper = styled.div`
 `;
 const Item = styled.div`
   height: 265px;
-  margin-right: 7px;
+  margin-right: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -22,13 +22,21 @@
     font-size: 50px;
     line-height: 50px;
     font-weight: 700;
+    color: #222831;
+    &.whiteText {
+      color: #fbf6f0;
+    }
   }
 
   .smallText {
     margin-top: 14px;
-    font-size: 23px;
+    font-size: 26px;
     line-height: 20px;
     font-weight: 600;
+    color: #393e46;
+    &.whiteText {
+      color: #bbbbbb;
+    }
   }
 }
 

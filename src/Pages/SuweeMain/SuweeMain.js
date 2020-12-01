@@ -39,7 +39,12 @@ function SuweeMain() {
 
   return (
     <MainContainer>
-      <Nav Token={Token} searchValue={searchValue} setSearchValue={setSearchValue} setSearchEnter={setSearchEnter} />
+      <Nav
+        Token={Token}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        setSearchEnter={setSearchEnter}
+      />
       {searchEnter && <SeachNav bookList={bookList} />}
       <MainImageCarousel />
       <TodaysBook />
@@ -58,8 +63,7 @@ function SuweeMain() {
         <Button
           onClick={() => {
             history.push('/payment');
-          }}
-        >
+          }}>
           <span>무제한</span> 독서 <span>시작</span> 하기
         </Button>
       </Popup>

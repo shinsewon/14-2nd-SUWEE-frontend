@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { withRouter, Link } from 'react-router-dom';
-import { BOOKLIST } from '../../../config';
+import { COMMINGSOONBOOK_API } from '../../../config';
 import { FaRegBell } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const CommingSoonBook = () => {
   const [commingSoonBooks, setCommingSoonBook] = useState([]);
 
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/detail/${this.props.product.id}`);
+  };
+
   useEffect(() => {
-    fetch(BOOKLIST)
+    fetch(COMMINGSOONBOOK_API)
       .then((res) => res.json())
       .then((res) => {
-        setCommingSoonBook(res.oneMonthBook);
+        setCommingSoonBook(res.commingSoonBook);
       })
       .catch((err) => console.log('Catched errors!!', err));
   }, []);
@@ -23,7 +29,7 @@ const CommingSoonBook = () => {
       <SlideWrapper>
         {commingSoonBooks.map((tag, idx) => {
           return (
-            <Item key={idx}>
+            <Item key={idx} onClick={handleClick}>
               <img src={tag.image} alt='책' />
               <Title>{tag.title}</Title>
               <Author>{tag.author}</Author>
@@ -72,7 +78,7 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 7px;
+  margin-right: 16px;
   position: relative;
   cursor: pointer;
   img {
@@ -108,7 +114,6 @@ const Notification = styled.div`
   border-radius: 4px;
   position: absolute;
   bottom: -50px;
-  left: 0;
 `;
 
 export default CommingSoonBook;

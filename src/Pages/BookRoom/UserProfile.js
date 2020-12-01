@@ -7,16 +7,20 @@ const UserProfile = () => {
 
   useEffect(() => {
     // fetch(`${BESTSELLER_API}&keyword=${keyword}`)
-    fetch(BOOKROOM_USER_API)
+    fetch(BOOKROOM_USER_API, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then((res) => res.json())
       .then((res) => {
         SetUserInfo(res.libraryInfo[0]);
+        // console.log(res.libraryInfo[0]);
       })
+
       .catch((err) => console.log('Catched errors!!', err));
   }, []);
-
+  console.log(userInfo);
   return (
-    <UserProfileContainer userInfoImage={userInfo.libraryImage}>
+    <UserProfileContainer userInfoImage={userInfo && userInfo.libraryImage}>
       <Profile>
         <img src={userInfo.userImage} alt='userImage' />
         <Title>{userInfo.libraryName}</Title>

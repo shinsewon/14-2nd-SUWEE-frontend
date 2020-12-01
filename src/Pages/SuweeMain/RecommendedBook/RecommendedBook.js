@@ -7,16 +7,27 @@ import styled from 'styled-components';
 
 const RecommendedBook = () => {
   const [recommendedBook, setRecommendedBook] = useState([]);
+  const [keyword, setKeyword] = useState(6);
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/detail/${this.props.product.id}`);
+  };
+
+  function changeCategory(id) {
+    setKeyword(id);
+  }
 
   useEffect(() => {
-    fetch(RECOMMENDEDBOOK_API)
+    fetch(`${RECOMMENDEDBOOK_API}&keyword=${keyword}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.recommend);
-        setRecommendedBook(res.recommend);
+        console.log(res.recommendBook);
+        setRecommendedBook(res.recommendBook);
       })
       .catch((err) => console.log('Catched errors!!', err));
-  }, []);
+  }, [keyword]);
 
   return (
     <Slide width='1280px'>
@@ -27,6 +38,7 @@ const RecommendedBook = () => {
             {TASTEBOOK_SUBCATEGORY_DATA.map((tag, idx) => (
               <Genre
                 key={idx}
+                onClick={() => changeCategory(tag.id)}
                 selected={tag.target === tag.idx ? '#222f3e' : null}>
                 {tag.name}
               </Genre>
@@ -36,7 +48,7 @@ const RecommendedBook = () => {
       </Category>
       <TasteBoxContainer>
         {recommendedBook.map((tag, idx) => (
-          <TasteBox key={idx}>
+          <TasteBox key={idx} onClick={handleClick}>
             <TasteBookInfo>
               <img src={tag.image} alt='추천책' />
             </TasteBookInfo>
@@ -92,6 +104,7 @@ const TasteBoxContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
+
 const TasteBox = styled.div`
   margin: 30px 0 0 20px;
   width: 400px;
