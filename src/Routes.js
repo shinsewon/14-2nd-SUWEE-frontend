@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from './Components/Nav/Nav';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 
@@ -8,7 +9,7 @@ class Routes extends Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path='/' component={Login} />
           </Switch>
         </Router>
       </React.Fragment>
