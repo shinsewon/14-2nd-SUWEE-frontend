@@ -1,0 +1,58 @@
+.imageContainer {
+  img {
+    width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.textContainer {
+  position: absolute;
+  top: 110px;
+  left: 70px;
+
+  &.whiteText {
+    color: white;
+  }
+
+  .largeText {
+    padding-bottom: 8px;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 700;
+  }
+
+  .smallText {
+    margin-top: 14px;
+    font-size: 23px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+}
+
+.controlButton {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+
+  &.prevButton {
+    left: 30px;
+    bottom: 20px;
+  }
+
+  &.nextButton {
+    left: 64px;
+    bottom: 20px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

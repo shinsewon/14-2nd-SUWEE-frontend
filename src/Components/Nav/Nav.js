@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import { FaRegBell } from 'react-icons/fa';
+import { FaRegBell } from 'react-icons/fa';
 // import { FaBeer } from 'react-icons/fa';
 
 import styled from 'styled-components';
@@ -35,7 +35,7 @@ function Nav() {
         </Menu>
         <UserSide>
           <Notice notice='notice'>
-            {/* <FaRegBell /> */}
+            <FaRegBell />
             {/* <FaBeer /> */}
           </Notice>
           <Notice>

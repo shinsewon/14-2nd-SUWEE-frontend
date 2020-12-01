@@ -1,14 +1,15 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import media from './Media';
+import { theme } from './CommonStyle';
 const Theme = ({ children }) => (
   <ThemeProvider
     theme={{
       primaryFont: 'Arial',
       primaryColor: '#666',
       ...media,
-    }}
-  >
+      ...theme,
+    }}>
     {children}
   </ThemeProvider>
 );

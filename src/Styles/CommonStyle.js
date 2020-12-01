@@ -1,12 +1,5 @@
 import { css } from 'styled-components';
 
-export const theme = {
-  yellow: 'rgba(252, 235, 96, 1)',
-  purple: 'rgba(164, 81, 247, 1)',
-  yellowOpacity: 'rgba(252, 235, 96, 0.5)',
-  purpleOpacity: 'rgba(164, 81, 247, 0.5)',
-};
-
 export const commonContainer = css`
   width: 700px;
   margin: 0 auto;
@@ -43,3 +36,18 @@ export const font16 = css`
   font-size: 16px;
   color: #666666;
 `;
+
+export const theme = {
+  yellow: 'rgba(252, 235, 96, 1)',
+  purple: 'rgba(164, 81, 247, 1)',
+  yellowOpacity: 'rgba(252, 235, 96, 0.5)',
+  purpleOpacity: 'rgba(164, 81, 247, 0.5)',
+  commonContainer,
+  clearFix,
+  positionCenter,
+  flexCenter,
+  font18,
+  font16,
+};
+
+export default theme;
