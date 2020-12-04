@@ -20,14 +20,14 @@ const PhoneCertify = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('인증 번호 : ', res);
-        alert('인증에 성공하였습니다.');
-        history.push('/agreement');
+        if (res.result === true) {
+          alert('인증에 성공하였습니다.');
+          history.push({ pathname: '/password-register', state: { userNumber } });
+        } else {
+          alert('인증번호를 확인해주세요.');
+        }
       });
   };
-  //백엔드랑 테스트 할때 쓰려고 적어놨습니다. 나중에 최종 완성때 지우겠습니다.
-  // console.log('부모 phone_number : ', userNumber);
-  // console.log('부모 certifyNumber : ', certifyNumber);
   return (
     <PhoneCertifyBody>
       <CertifyBox>

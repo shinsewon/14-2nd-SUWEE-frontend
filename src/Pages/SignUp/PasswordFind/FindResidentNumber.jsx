@@ -9,9 +9,9 @@ const FindResidentNumber = () => {
     <FindResidentNumberWrap>
       <ResidentNumber />
       <Phone>
-        <input type="number" className="frontResident" placeholder={`YYMMDD`}></input>
+        <input type="number" className="frontResident" placeholder={`YYMMDD`} />
         <span>-</span>
-        <input type="number" className="backResident"></input>
+        <input type="number" className="backResident" />
         {ROUND.map((round) => {
           return <span key={round.id}>{round.round}</span>;
         })}

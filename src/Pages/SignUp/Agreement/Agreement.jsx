@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SignUpNav from '../../../Components/SignUpNav/SignUpNav';
 import IdCheckBox from '../../../Components/IdCheckBox/IdCheckBox';
 import styled from 'styled-components';
 import { AGREEMENT } from '../../../data';
+import { DUBBLE_CHECK } from '../../../config';
 import { flexCenter, theme } from '../../../Styles/CommonStyle';
 
-const Agreement = (props) => {
+const Agreement = ({ state, passwordCheck }) => {
+  const location = useLocation();
+  const history = useHistory();
   const [allCheck, setAllCheck] = useState(false);
   const [checkBox, setCheckBox] = useState(AGREEMENT);
   const [userId, setUserId] = useState('');
   const [usableId, setUsableId] = useState(false);
 
-  console.log('userId : ', userId);
+  //백엔드와 맞춰볼 location.state 확인용입니다.
+  // console.log('passwordCheck : ', location.state.passwordCheck);
+  // console.log('userNumber : ', location.state.test.userNumber);
 
   const handleAllCheck = () => {
-    [...checkBox].map((check) => {
+    let checkBox2 = [...checkBox].map((check) => {
       return (check.isCheck = !allCheck);
     });
     setAllCheck(!allCheck);
@@ -50,30 +57,29 @@ const Agreement = (props) => {
     }
     if (!comparison.length && usableId) {
       alert('가입을 축하드립니다!');
-      props.history.push('/main');
+      history.push('/main');
     }
     if (!usableId) {
       alert('필명 중복 체크 해주세요.');
     }
   };
 
-  //중복확인 props handle(백엔드랑 통신)
+  // 중복확인 props handle(백엔드랑 통신)
   const handleIdCheck = (e) => {
     e.preventDefault();
-    fetch('Api주소', {
+    fetch(`${DUBBLE_CHECK}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ user_id: userId }),
+      body: JSON.stringify({ nickname: userId, phone_number: location.state.test.userNumber, password: location.state.passwordCheck }),
     }).then((res) => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         alert('사용가능한 필명 입니다.');
         setUsableId(true);
-      } else if (res.status === 409) {
+      }
+      if (res.status === 409) {
         alert('이미 사용중인 필명입니다.');
-      } else {
-        alert('사용 불가한 필명입니다.');
       }
     });
   };
@@ -86,14 +92,14 @@ const Agreement = (props) => {
           <h3>약관동의</h3>
           <AgreementBox color={allCheck}>
             <div className="allAgreementBox">
-              <input id="ck1" type="checkbox" />
-              <label for="ck1" className="allAgreement" onClick={handleAllCheck} name="all" checked={allCheck} />
+              <input id="allCheck" type="checkbox" />
+              <label for="allCheck" className="allAgreement" onClick={handleAllCheck} name="all" checked={allCheck} />
               <span>전체 동의하기</span>
             </div>
             <div className="line"></div>
             {AGREEMENT.map((agr) => {
               return (
-                <MapAgreementBox key={agr.id} color2={agr.isCheck}>
+                <MapAgreementBox key={agr.id} subColor={agr.isCheck}>
                   <input id={agr.id} type="checkbox" />
                   <label for={agr.id} className="choice" onClick={() => handelCheck(agr)} checked={agr.isCheck} />
                   <span>{agr.choice}</span>
@@ -154,11 +160,11 @@ const AgreementBox = styled.div`
     font-size: 20px;
     margin: 20px 0 20px 10px;
 
-    input[id='ck1'] {
+    input[id='allCheck'] {
       display: none;
     }
 
-    input[id='ck1'] + label {
+    input[id='allCheck'] + label {
       width: 20px;
       height: 20px;
       margin: 0 5px 0 0;
@@ -184,7 +190,7 @@ const MapAgreementBox = styled.div`
       width: 15px;
       height: 15px;
       margin: 0 5px 0 0;
-      background-color: ${(props) => (props.color2 === true ? theme.yellow : 'white')};
+      background-color: ${(props) => (props.subColor === true ? theme.yellow : 'white')};
       border: 2px solid ${theme.yellow};
     }
   }

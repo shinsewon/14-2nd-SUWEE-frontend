@@ -40,7 +40,7 @@ export const ADJECTIVE = [
   '치명적인',
   '맨날 아픈',
   '심기가 불편한',
-  '배고플때 건들면 화내는',
+  '배고플때 먹을거 주면 좋아하는',
 ];
 
 export const NAME = [

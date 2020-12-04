@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SignUpNav from '../../../Components/SignUpNav/SignUpNav';
 import InputBox1 from '../../../Components/InputBox/InputBox1';
 import InputBox2 from '../../../Components/InputBox/InputBox2';
@@ -7,8 +8,9 @@ import ResidentNumber from '../../../Components/ResidentNumber/ResidentNumber';
 import styled from 'styled-components';
 import { flexCenter, theme } from '../../../Styles/CommonStyle';
 
-const PasswordRegister = (props) => {
-  const history = useHistory;
+const PasswordRegister = ({ name, userNumber }) => {
+  const location = useLocation();
+  const history = useHistory();
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [validPw, setValidPw] = useState(true);
@@ -17,6 +19,12 @@ const PasswordRegister = (props) => {
   const [backResidentNum, setBackResident] = useState('');
   const [frontResidentCheck, setFrontResidentCheck] = useState(false);
   const [backResidentCheck, setBackResidentCheck] = useState(false);
+  const [test, setTest] = useState(location.state);
+  //백엔드와 맞춰볼 location.state 확인용입니다.
+  // console.log('passwordCheck : ', location.state.passwordCheck);
+  // console.log('location.state.test.userNumber : ', location.state.test.userNumber);
+  // console.log('location : ', location.state.userNumber);
+  // console.log('location.state : ', location.state);
 
   //비밀번호, 비밀번호 재확인 인증 체크
   const validationCheck = (name, value) => {
@@ -45,9 +53,8 @@ const PasswordRegister = (props) => {
   };
 
   const goToNextPage = () => {
-    console.log('클릭되나?');
     if (validPw && validDoubleCheck && frontResidentCheck && backResidentCheck) {
-      props.history.push('/agreement');
+      history.push({ pathname: '/agreement', state: { test, passwordCheck } });
     } else {
       alert('다시 한번 확인 해주세요.');
     }
