@@ -4,15 +4,13 @@ import styled from 'styled-components';
 
 const PayAmount = ({ title }) => {
   return (
-    <div>
-      <Wrap>
-        <h3>{title}</h3>
-        <PaymentBox>
-          <TotalPay>총 결제금액</TotalPay>
-          <Pay>9,900원</Pay>
-        </PaymentBox>
-      </Wrap>
-    </div>
+    <Wrap>
+      <h3>{title}</h3>
+      <PaymentBox>
+        <TotalPay>총 결제금액</TotalPay>
+        <Pay>9,900원</Pay>
+      </PaymentBox>
+    </Wrap>
   );
 };
 

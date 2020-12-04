@@ -4,62 +4,62 @@ import { flexCenter } from '../../../Styles/CommonStyle';
 import styled from 'styled-components';
 
 const PayWay = ({ title, kakaoClick, phoneClick, setKakaoClick, setPhoneClick }) => {
-  const handleKakaoClick = () => {
-    setKakaoClick(!kakaoClick);
-    if (kakaoClick === false || true) {
-      return setPhoneClick(true);
+  const handleClick = (e) => {
+    const { innerText } = e.target;
+    if (innerText === '카카오페이') {
+      setKakaoClick(!kakaoClick);
+      if (kakaoClick === false || true) {
+        return setPhoneClick(true);
+      }
     }
-  };
-
-  const handlePhoneClick = () => {
-    setPhoneClick(!phoneClick);
-    if (phoneClick === false || true) {
-      return setKakaoClick(true);
+    if (innerText === '휴대폰결제') {
+      setPhoneClick(!phoneClick);
+      if (phoneClick === false || true) {
+        return setKakaoClick(true);
+      }
     }
   };
   return (
-    <div>
-      <Wrap>
-        <h3>{title}</h3>
-        <PaymentBox>
-          {kakaoClick && (
-            <KakaoPayFirst onClick={handleKakaoClick}>
-              <KaKaoPayImgBoxFirst>
-                <img src="/images/kakaopay.png" alt="카카오페이" />
-              </KaKaoPayImgBoxFirst>
-              <KakaoTextFirst>카카오페이</KakaoTextFirst>
-            </KakaoPayFirst>
-          )}
+    <Wrap>
+      <h3>{title}</h3>
+      <PaymentBox>
+        {kakaoClick && (
+          <KakaoPayClickBefore onClick={handleClick}>
+            <KaKaoPayImgBoxClickBefore>
+              <img src="/images/kakaopay.png" alt="카카오페이" />
+            </KaKaoPayImgBoxClickBefore>
+            <KakaoTextClickBefore>카카오페이</KakaoTextClickBefore>
+          </KakaoPayClickBefore>
+        )}
 
-          {!kakaoClick && (
-            <KakaoPaySecond onClick={handleKakaoClick}>
-              <KaKaoPayImgBoxSecond>
-                <img src="/images/kakaopay.png" alt="카카오페이" />
-              </KaKaoPayImgBoxSecond>
-              <KakaoTextSecond>카카오페이</KakaoTextSecond>
-            </KakaoPaySecond>
-          )}
+        {!kakaoClick && (
+          <KakaoPayClickAfter onClick={handleClick}>
+            <KaKaoPayImgBoxClickAfter>
+              <img src="/images/kakaopay.png" alt="카카오페이" />
+            </KaKaoPayImgBoxClickAfter>
+            <KakaoTextClickAfter>카카오페이</KakaoTextClickAfter>
+          </KakaoPayClickAfter>
+        )}
 
-          {phoneClick && (
-            <PhonePayFirst onClick={handlePhoneClick}>
-              <PhonePayImgBoxFirst>
-                <img src="/images/mobile.png" alt="모바일페이" />
-              </PhonePayImgBoxFirst>
-              <PhoneTextFirst>휴대폰결제</PhoneTextFirst>
-            </PhonePayFirst>
-          )}
+        {phoneClick && (
+          <PhonePayClickBefore onClick={handleClick}>
+            <PhonePayImgBoxClickBefore>
+              <img src="/images/mobile.png" alt="모바일페이" />
+            </PhonePayImgBoxClickBefore>
+            <PhoneTextClickBefore>휴대폰결제</PhoneTextClickBefore>
+          </PhonePayClickBefore>
+        )}
 
-          {!phoneClick && (
-            <PhonePaySecond onClick={handlePhoneClick}>
-              <PhonePayImgBoxSecond>
-                <img src="/images/mobile.png" alt="모바일페이" />
-              </PhonePayImgBoxSecond>
-              <PhoneTextSecond>휴대폰결제</PhoneTextSecond>
-            </PhonePaySecond>
-          )}
-        </PaymentBox>
-      </Wrap>
-    </div>
+        {!phoneClick && (
+          <PhonePayClickAfter onClick={handleClick}>
+            <PhonePayImgBoxClickAfter>
+              <img src="/images/mobile.png" alt="모바일페이" />
+            </PhonePayImgBoxClickAfter>
+            <PhoneTextClickAfter>휴대폰결제</PhoneTextClickAfter>
+          </PhonePayClickAfter>
+        )}
+      </PaymentBox>
+    </Wrap>
   );
 };
 
@@ -80,7 +80,7 @@ const PaymentBox = styled.div`
   height: 60px;
 `;
 
-const KakaoPaySecond = styled.div`
+const KakaoPayClickAfter = styled.div`
   ${flexCenter}
   width: 340px;
   height: 100%;
@@ -90,7 +90,7 @@ const KakaoPaySecond = styled.div`
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const KaKaoPayImgBoxSecond = styled.div`
+const KaKaoPayImgBoxClickAfter = styled.div`
   width: 40px;
   height: 20px;
   background-color: white;
@@ -100,12 +100,12 @@ const KaKaoPayImgBoxSecond = styled.div`
   }
 `;
 
-const KakaoTextSecond = styled.span`
+const KakaoTextClickAfter = styled.span`
   font-size: 14px;
   margin-left: 5px;
 `;
 
-const KakaoPayFirst = styled.div`
+const KakaoPayClickBefore = styled.div`
   ${flexCenter}
   width: 340px;
   height: 100%;
@@ -115,7 +115,7 @@ const KakaoPayFirst = styled.div`
   -webkit-filter: grayscale(100%);
 `;
 
-const KaKaoPayImgBoxFirst = styled.div`
+const KaKaoPayImgBoxClickBefore = styled.div`
   width: 40px;
   height: 20px;
   background-color: white;
@@ -125,12 +125,12 @@ const KaKaoPayImgBoxFirst = styled.div`
   }
 `;
 
-const KakaoTextFirst = styled.span`
+const KakaoTextClickBefore = styled.span`
   font-size: 14px;
   margin-left: 5px;
 `;
 
-const PhonePaySecond = styled.div`
+const PhonePayClickAfter = styled.div`
   ${flexCenter}
   width: 340px;
   height: 100%;
@@ -140,7 +140,7 @@ const PhonePaySecond = styled.div`
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const PhonePayImgBoxSecond = styled.div`
+const PhonePayImgBoxClickAfter = styled.div`
   width: 30px;
   height: 30px;
 
@@ -149,12 +149,12 @@ const PhonePayImgBoxSecond = styled.div`
   }
 `;
 
-const PhoneTextSecond = styled.span`
+const PhoneTextClickAfter = styled.span`
   font-size: 14px;
   margin-left: 5px;
 `;
 
-const PhonePayFirst = styled.div`
+const PhonePayClickBefore = styled.div`
   ${flexCenter}
   width: 340px;
   height: 100%;
@@ -164,7 +164,7 @@ const PhonePayFirst = styled.div`
   filter: grayscale(100%);
 `;
 
-const PhonePayImgBoxFirst = styled.div`
+const PhonePayImgBoxClickBefore = styled.div`
   width: 30px;
   height: 30px;
 
@@ -173,7 +173,7 @@ const PhonePayImgBoxFirst = styled.div`
   }
 `;
 
-const PhoneTextFirst = styled.span`
+const PhoneTextClickBefore = styled.span`
   font-size: 14px;
   margin-left: 5px;
 `;

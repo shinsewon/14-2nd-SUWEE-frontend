@@ -24,6 +24,8 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((res) => {
+            //카카오 응답 테스트 console.log
+            console.log('res : ', res);
             localStorage.setItem('Kakao_token', res.access_token);
             if (res.access_token) {
               alert('SUWEE의 서재에 오신걸 환영합니다!');

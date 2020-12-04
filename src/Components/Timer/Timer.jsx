@@ -7,13 +7,14 @@ const Timer = () => {
 
   useEffect(() => {
     const countdown = setInterval(() => {
-      if (parseInt(seconds) > 0) {
+      if (parseInt(seconds)) {
         setSeconds(parseInt(seconds) - 1);
       }
       if (parseInt(seconds) === 0) {
         if (parseInt(minutes) === 0) {
           clearInterval(countdown);
-        } else {
+        }
+        if (parseInt(minutes) !== 0) {
           setMinutes(parseInt(minutes) - 1);
           setSeconds(59);
         }
@@ -22,11 +23,9 @@ const Timer = () => {
     return () => clearInterval(countdown);
   }, [minutes, seconds]);
   return (
-    <>
-      <Time>
-        {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-      </Time>
-    </>
+    <Time>
+      {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+    </Time>
   );
 };
 

@@ -1,24 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { flexCenter } from '../../Styles/CommonStyle';
 
 const SignUpNav = (props) => {
   return (
-    <div>
-      <PhoneCertifyBox>
-        <nav>
-          <h2>{props.name}</h2>
-        </nav>
-      </PhoneCertifyBox>
-    </div>
+    <PhoneCertifyBox>
+      <nav>
+        <h2>{props.name}</h2>
+      </nav>
+    </PhoneCertifyBox>
   );
 };
 
 export default SignUpNav;
 
 const PhoneCertifyBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter}
   width: 100%;
   height: 100%;
   background-color: white;
@@ -27,9 +24,7 @@ const PhoneCertifyBox = styled.div`
     width: 100%;
     border-bottom: 1px solid #eeeeee;
     h2 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      ${flexCenter}
       height: 50px;
       color: #000000;
       font-size: 18px;

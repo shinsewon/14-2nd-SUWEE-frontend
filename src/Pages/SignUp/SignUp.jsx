@@ -24,8 +24,8 @@ const SignUp = () => {
               </h2>
             </TextBox>
           </Wrap>
-          <InputPhoneId type="number" placeholder="휴대폰 번호"></InputPhoneId>
-          <InputPassword type="password" placeholder="비밀번호"></InputPassword>
+          <InputPhoneId type="number" placeholder="휴대폰 번호" />
+          <InputPassword type="password" placeholder="비밀번호" />
           <Button>
             <Link to="/signupphone">휴대폰 번호로 시작하기</Link>
           </Button>
