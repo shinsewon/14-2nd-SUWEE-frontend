@@ -8,7 +8,7 @@ export const theme = {
 };
 
 export const commonContainer = css`
-  width: 1280px;
+  width: 700px;
   margin: 0 auto;
 `;
 
@@ -31,4 +31,15 @@ export const flexCenter = css`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const font18 = css`
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
+`;
+
+export const font16 = css`
+  font-size: 16px;
+  color: #666666;
 `;

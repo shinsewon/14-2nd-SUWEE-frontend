@@ -1,8 +1,8 @@
 import React from 'react';
-import { LOGINIMAGES } from './data/data';
-import { KAKAO_API } from '../../config';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { LOGINIMAGES } from './data/data';
+import { KAKAO_API } from '../../config';
 import { flexCenter } from '../../Styles/CommonStyle';
 
 const Login = () => {
@@ -10,18 +10,20 @@ const Login = () => {
   const goToKakao = () => {
     Kakao.Auth.login({
       success: function (authObj) {
+        console.log('authObj : ', authObj);
         fetch(`${KAKAO_API}`, {
           method: 'POST',
-          body: JSON.stringify({
-            access_token: authObj.access_token,
-          }),
+          headers: {
+            Authorization: authObj.access_token,
+          },
         })
           .then((res) => res.json())
           .then((res) => {
+            console.log('res : ', res);
             localStorage.setItem('Kakao_token', res.access_token);
             if (res.access_token) {
               alert('SUWEE의 서재에 오신걸 환영합니다!');
-              history.push('/main');
+              history.push('/signup');
             }
           });
       },
@@ -31,14 +33,6 @@ const Login = () => {
     });
   };
 
-  const goToLogOut = () => {
-    if (Kakao.Auth.getAccessToken()) {
-      console.log('카카오 인증 액세스 토큰이 존재함', Kakao.Auth.getAccessToken());
-      Kakao.Auth.goToLogOut(() => {
-        console.log('로그아웃됨', Kakao.Auth.getAccessToken());
-      });
-    }
-  };
   return (
     <StyleLogin>
       <BackgroundImgContainer>

@@ -6,7 +6,7 @@ const SignUpPhoneCertify = () => {
   return (
     <>
       <SignUpNav name={'휴대폰 인증'} />
-      <PhoneCertify name="세원" />
+      <PhoneCertify />
     </>
   );
 };
