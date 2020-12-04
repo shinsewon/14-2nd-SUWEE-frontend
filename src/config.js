@@ -1,1 +1,1 @@
-export const TEST = 'http://test';
+export const KAKAO_API = 'http://10.58.7.159:8000/user/kakao_sign_in';
