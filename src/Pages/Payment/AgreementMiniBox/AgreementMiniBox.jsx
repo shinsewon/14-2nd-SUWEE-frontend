@@ -22,13 +22,7 @@ const AgreementMiniBox = ({ allCheck, setAllCheck, setCheckBox }) => {
     let AllTrue = MapCheckBox.every((el) => {
       return el.isCheck === true;
     });
-
-    if (AllTrue) {
-      setAllCheck(!allCheck);
-    }
-    if (!AllTrue) {
-      setAllCheck(false);
-    }
+    AllTrue ? setAllCheck(!allCheck) : setAllCheck(false);
   };
   return (
     <Wrap>
@@ -38,7 +32,7 @@ const AgreementMiniBox = ({ allCheck, setAllCheck, setCheckBox }) => {
           <label for="ck1" className="allAgreement" name="all" checked={allCheck} onClick={handleAllCheck} />
           <span>전체 약관 동의하기</span>
         </div>
-        <Line></Line>
+        <Line />
         {PAYAGREEMENT.map((agr) => {
           return (
             <MapAgreementBox key={agr.id} color2={agr.isCheck}>

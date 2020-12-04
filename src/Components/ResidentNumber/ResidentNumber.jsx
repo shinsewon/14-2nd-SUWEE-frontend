@@ -26,7 +26,7 @@ const ResidentNumber = ({
     const { value } = e.target;
     setBackResident(value);
     let pattern = /^\d{1}$/;
-    if (pattern.test(value) === false) {
+    if (!pattern.test(value)) {
       return setBackResident('');
     }
     setBackResidentCheck(true);

@@ -22,9 +22,6 @@ const PhoneCertifyBox = ({ setUserNumber, userNumber, certifyNumber, setCertifyN
     setClick(true);
     fetch(`${CERTIFY_REQUEST}`, {
       method: 'POST',
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
       body: JSON.stringify({
         phone_number: userNumber,
       }),
@@ -48,7 +45,7 @@ const PhoneCertifyBox = ({ setUserNumber, userNumber, certifyNumber, setCertifyN
         <TimerBox>
           {click && (
             <input
-              className="inputBox2"
+              className="numberInputBox"
               value={certifyNumber}
               type="number"
               placeholder={`인증번호 입력`}
@@ -77,7 +74,6 @@ const Phone = styled.div`
 
   .inputBox {
     display: flex;
-    width: 100%;
     height: 40px;
 
     input {
@@ -112,9 +108,8 @@ const Phone = styled.div`
 const TimerBox = styled.div`
   display: flex;
   position: relative;
-  width: 100%;
 
-  .inputBox2 {
+  .numberInputBox {
     width: 100%;
     height: 40px;
     margin-top: 10px;
