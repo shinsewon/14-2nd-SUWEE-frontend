@@ -102,3 +102,12 @@ export const PAYDATA = {
   buyer_addr: '성균관로3길 20-35', // 구매자 주소
   buyer_postcode: '03073', // 구매자 우편번호
 };
+
+export const AUDIOMAINIMG = 'https://d3udu241ivsax2.cloudfront.net/common/images/company/brand/millieBookCard1Bg_20200210.png';
+export const AUDIOSUBIMG = 'https://d3udu241ivsax2.cloudfront.net/common/images/company/brand/millieBookCard1Img.png';
+export const AUDIOTHIRDIMG = 'https://www.millie.co.kr/company/assets/millieBookCard1Btn.svg';
+
+export const CHARTMAINIMG = 'https://d3udu241ivsax2.cloudfront.net/common/images/company/brand/millieBookCard2Bg.png';
+export const CHARTSUBIMG = 'https://d3udu241ivsax2.cloudfront.net/common/images/company/brand/millieBookCard2Img.png';
+export const CHARTTHIRDIMG =
+  'https://trello-attachments.s3.amazonaws.com/5fc465951dfcce1dc3a95814/5fc48e535151e366256bb3ef/94a95323723359acd007408502170c9f/%EC%8B%A0%EC%84%B8%EC%9B%90_%ED%9D%91%EB%B0%B1%EB%B0%8F%EB%88%84%EB%81%BC%EC%9A%94%EC%B2%AD.png';

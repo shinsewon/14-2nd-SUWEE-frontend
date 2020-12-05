@@ -7,9 +7,11 @@ const Theme = ({ children }) => (
     theme={{
       primaryFont: 'Arial',
       primaryColor: '#666',
+      mainColor: 'red',
       ...media,
       ...theme,
-    }}>
+    }}
+  >
     {children}
   </ThemeProvider>
 );

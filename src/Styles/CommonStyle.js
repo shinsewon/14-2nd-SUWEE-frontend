@@ -40,6 +40,7 @@ export const font16 = css`
 export const theme = {
   yellow: 'rgba(252, 235, 96, 1)',
   purple: 'rgba(164, 81, 247, 1)',
+  boldPurple: '#6A31A4',
   yellowOpacity: 'rgba(252, 235, 96, 0.5)',
   purpleOpacity: 'rgba(164, 81, 247, 0.5)',
   commonContainer,
