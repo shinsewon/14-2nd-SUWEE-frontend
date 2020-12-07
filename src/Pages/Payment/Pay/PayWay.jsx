@@ -88,7 +88,6 @@ const KakaoPaySecond = styled.div`
   border: 2px solid ${theme.yellow};
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* -webkit-filter: grayscale(100%); */
 `;
 
 const KaKaoPayImgBoxSecond = styled.div`
@@ -113,7 +112,6 @@ const KakaoPayFirst = styled.div`
   border-radius: 5px;
   border: 2px solid ${theme.yellow};
   cursor: pointer;
-  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1); */
   -webkit-filter: grayscale(100%);
 `;
 
@@ -147,7 +145,6 @@ const PhonePayImgBoxSecond = styled.div`
   height: 30px;
 
   img {
-    /* filter: drop-shadow (8px 8px 10px red); */
     filter: invert(100%) sepia(41%) saturate(3474%) hue-rotate(323deg) brightness(107%) contrast(102%);
   }
 `;
@@ -165,11 +162,6 @@ const PhonePayFirst = styled.div`
   border: 1px solid #cccccc;
   cursor: pointer;
   filter: grayscale(100%);
-  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1); */
-
-  &:active {
-    font-weight: bold;
-  }
 `;
 
 const PhonePayImgBoxFirst = styled.div`

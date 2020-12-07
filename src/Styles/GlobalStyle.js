@@ -33,8 +33,6 @@ ${reset}
     input, button {
     background-color: transparent;
     }
-<<<<<<< HEAD
-=======
     h1, h2, h3, h4, h5, h6 {
     font-family:'Maven Pro', sans-serif;
   }
@@ -62,7 +60,6 @@ ${reset}
     h1, h2, h3, h4, h5, h6 {
     font-family:'Maven Pro', sans-serif;
   }
->>>>>>> 4cf2817... [회원가입,로그인,패스워드]
 `;
 
 export default GlobalStyle;

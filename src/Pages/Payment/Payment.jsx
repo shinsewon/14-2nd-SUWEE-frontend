@@ -8,10 +8,8 @@ import AgreementMiniBoxComponent from './AgreementMiniBox/AgreementMiniBox';
 import { PAYDATA, PAYAGREEMENT } from '../../data';
 import { font18, font16, commonContainer } from '../../Styles/CommonStyle';
 import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 
 const Payment = (props) => {
-  const history = useHistory;
   const [allCheck, setAllCheck] = useState(false);
   const [checkBox, setCheckBox] = useState(PAYAGREEMENT);
   const [kakaoClick, setKakaoClick] = useState(true);
@@ -20,7 +18,7 @@ const Payment = (props) => {
 
   //결제함수 실행을 위한 콜백 함수
   const callback = (response) => {
-    const { success, merchant_uid, error_msg } = response;
+    const { success, error_msg } = response;
     if (success) {
       alert('결제 성공');
       return props.history.push('/main');
