@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import media from './Media';
 import { theme } from './CommonStyle';
+import media from './Media';
 const Theme = ({ children }) => (
   <ThemeProvider
     theme={{

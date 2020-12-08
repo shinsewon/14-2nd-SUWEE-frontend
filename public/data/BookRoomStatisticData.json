@@ -1,0 +1,12 @@
+{
+  "data": {
+    "total_book_count": 0,
+    "total_read_time": 0,
+    "recommand_book": {
+      "id": 172,
+      "title": "불교 복지, 행복 과 대화 하다",
+      "image_url": "http://books.google.com/books/content?id=O2mVQQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "author": ""
+    }
+  }
+}

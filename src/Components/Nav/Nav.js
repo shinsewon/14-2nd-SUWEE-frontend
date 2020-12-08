@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { FaRegBell } from 'react-icons/fa';
-
 import styled from 'styled-components';
 
 const pathList = [
@@ -30,8 +29,8 @@ function Nav({ searchValue, setSearchValue, setSearchEnter }) {
     <NavTop>
       <NavTopContainer>
         <Menu>
-          <Link to="/">
-            <img src="./images/logo_dark.png" alt="수위의 서재 로고" />
+          <Link to='/'>
+            <img src='./images/logo_dark.png' alt='수위의 서재 로고' />
           </Link>
           <ul>
             {pathList.map((tag, idx) => {
@@ -44,10 +43,14 @@ function Nav({ searchValue, setSearchValue, setSearchEnter }) {
           </ul>
         </Menu>
         <SearchBox onSubmit={handleOnSubmit}>
-          <Search value={searchValue} placeholder="검색어를 입력해주세요." onChange={(e) => setSearchValue(e.target.value)} />
+          <Search
+            value={searchValue}
+            placeholder='검색어를 입력해주세요.'
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
         </SearchBox>
         <UserSide>
-          <Notice notice="notice">
+          <Notice notice='notice'>
             <FaRegBell />
           </Notice>
           <Notice>
