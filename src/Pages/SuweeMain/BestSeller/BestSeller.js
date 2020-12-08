@@ -11,7 +11,7 @@ const BestSeller = () => {
   const [bestSeller, setBestSeller] = useState([]);
   const [keyword, setKeyword] = useState(1);
 
-  let history = useHistory();
+  const history = useHistory();
 
   const handleClick = () => {
     history.push(`/detail/${this.props.product.id}`);
@@ -19,20 +19,9 @@ const BestSeller = () => {
 
   function changeCategory(id) {
     setKeyword(id);
-    // 클릭한 e.target.id ===BESTSELLER_SUBCATEGORY_DATA.id 때
-    // 클릭한 id에 해당하는 리스트만 출력한다.
-    //color 변경
-    // e.target === props.selected
   }
+
   useEffect(() => {
-    // fetch(`${BEAPIROOT}/book?limit=55`)
-
-    // axios.get(BOOKLIST)
-    // .then((res) => {
-    //   console.log(res.oneMonthBook);
-    //   setNewBook(res.oneMonthBook);
-    // });
-
     // fetch(`${BOOKLIST}/?limit=20`)
     fetch(`${BESTSELLER_API}&keyword=${keyword}`)
       .then((res) => res.json())
