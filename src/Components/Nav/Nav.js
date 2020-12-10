@@ -1,7 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import { FaRegBell } from 'react-icons/fa';
-// import { FaBeer } from 'react-icons/fa';
 
 import styled from 'styled-components';
 
@@ -13,15 +12,26 @@ const pathList = [
   { id: 5, path: '/', content: '관리' },
 ];
 
-function Nav() {
+function Nav({ searchValue, setSearchValue, setSearchEnter }) {
   const [menu, setMenu] = useState(1);
+
+  //이 부분은 백엔드한테 정보를 다시 받아서 저장하고 책 필터 기능을 따로 리덕스를 써서 추가해야함
+  const searchBook = () => {
+    fetch('http://localhost:3000/find?');
+  };
+
+  //검색 버튼 엔터
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    setSearchEnter(true);
+  };
 
   return (
     <NavTop>
       <NavTopContainer>
         <Menu>
-          <Link to='/'>
-            <img src='./images/logo_dark.png' alt='수위의 서재 로고' />
+          <Link to="/">
+            <img src="./images/logo_dark.png" alt="수위의 서재 로고" />
           </Link>
           <ul>
             {pathList.map((tag, idx) => {
@@ -33,10 +43,12 @@ function Nav() {
             })}
           </ul>
         </Menu>
+        <SearchBox onSubmit={handleOnSubmit}>
+          <Search value={searchValue} placeholder="검색어를 입력해주세요." onChange={(e) => setSearchValue(e.target.value)} />
+        </SearchBox>
         <UserSide>
-          <Notice notice='notice'>
+          <Notice notice="notice">
             <FaRegBell />
-            {/* <FaBeer /> */}
           </Notice>
           <Notice>
             <BlackBtn>로그인</BlackBtn>
@@ -98,6 +110,29 @@ const MenuList = styled.li`
   color: black;
   cursor: pointer;
   font-weight: ${({ active }) => active && '600'};
+`;
+
+const SearchBox = styled.form``;
+
+const Search = styled.input`
+  width: 400px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    color: #cccccc;
+    padding-left: 10px;
+  }
 `;
 
 const UserSide = styled.ul`
