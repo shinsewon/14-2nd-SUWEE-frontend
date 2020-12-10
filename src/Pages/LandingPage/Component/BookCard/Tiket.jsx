@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { flexCenter, theme } from '../../../../Styles/CommonStyle';
 
@@ -21,7 +22,12 @@ const Tiket = ({
   const MP = +monthPrice;
   const YP = +yearPrice;
   const TP = +totalPrice;
+  const history = useHistory();
 
+  const goToPayment = () => {
+    console.log('클릭');
+    history.push('/payment');
+  };
   return (
     <Container data-aos="zoom-in">
       <ColorBox backgroundColor={backgroundColor} fontColor={fontColor}>
@@ -66,7 +72,7 @@ const Tiket = ({
       </SecondWrap>
       <ThirdWrap>
         <div className="subscriptionBox">
-          <Subscription fontColor={fontColor} firstBoxColor={firstBoxColor}>
+          <Subscription fontColor={fontColor} firstBoxColor={firstBoxColor} onClick={goToPayment}>
             월 정기구독
           </Subscription>
           <Subscription fontColor={fontColor} secondBoxColor={secondBoxColor}>

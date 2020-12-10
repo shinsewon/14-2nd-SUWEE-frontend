@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import SignUpNav from '../../../Components/SignUpNav/SignUpNav';
 import IdCheckBox from '../../../Components/IdCheckBox/IdCheckBox';
 import styled from 'styled-components';
@@ -57,7 +56,7 @@ const Agreement = ({ state, passwordCheck }) => {
     }
     if (!comparison.length && usableId) {
       alert('가입을 축하드립니다!');
-      history.push('/main');
+      history.push('/login');
     }
     if (!usableId) {
       alert('필명 중복 체크 해주세요.');

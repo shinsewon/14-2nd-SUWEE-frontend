@@ -21,21 +21,17 @@ class Routes extends Component {
       <React.Fragment>
         <Router>
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route exact path='/signup' component={SignUp} />
-            <Route exact path='/signupphone' component={SignUpPhoneCertify} />
-            <Route exact path='/password-find' component={PasswordFind} />
-            <Route
-              exact
-              path='/password-register'
-              component={PasswordRegister}
-            />
-            <Route exact path='/agreement' component={Agreement} />
-            <Route exact path='/payment' component={Payment} />
-            <Route exact path='/SuweeMain' component={SuweeMain} />
-            <Route exact path='/detail:id' component={BookDetails} />
-            <Route exact path='/BookRoom' component={BookRoom} />
-            <Route exact path='/landingpage' component={LandingPage} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/signupphone" component={SignUpPhoneCertify} />
+            <Route exact path="/password-find" component={PasswordFind} />
+            <Route exact path="/password-register" component={PasswordRegister} />
+            <Route exact path="/agreement" component={Agreement} />
+            <Route exact path="/payment" component={Payment} />
+            <Route exact path="/SuweeMain" component={SuweeMain} />
+            <Route exact path="/detail:id" component={BookDetails} />
+            <Route exact path="/BookRoom" component={BookRoom} />
+            <Route exact path="/" component={LandingPage} />
           </Switch>
         </Router>
       </React.Fragment>

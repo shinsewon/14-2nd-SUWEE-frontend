@@ -94,9 +94,9 @@ export const PAYDATA = {
   pg: 'kakaopay', // PG사
   pay_method: 'card', // 결제수단
   merchant_uid: `mid_${new Date().getTime()}`, // 주문번호
-  amount: 13950, // 결제금액
-  name: '더는 걸어갈 땅이 없었다', // 주문명
-  buyer_name: '김동하', // 구매자 이름
+  amount: '9,900', // 결제금액
+  name: '월 정기구독', // 주문명
+  buyer_name: 'SUWEE의 서재', // 구매자 이름
   buyer_tel: '01097751541', // 구매자 전화번호
   buyer_email: 'shin6403@gmail.com', // 구매자 이메일
   buyer_addr: '성균관로3길 20-35', // 구매자 주소

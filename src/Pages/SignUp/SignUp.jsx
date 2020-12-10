@@ -9,18 +9,14 @@ const SignUp = () => {
     <StyleLogin>
       <BackgroundImgContainer>
         <LoginBoxContainer>
-          <img
-            className='backgroundImg'
-            src='/images/library2.jpg'
-            alt='배경화면'
-          />
+          <img className="backgroundImg" src="/images/library2.jpg" alt="배경화면" />
         </LoginBoxContainer>
       </BackgroundImgContainer>
       <LoginContainer>
         <LogoWrap>
           <Wrap>
             <TextBox>
-              <h2 className='freeOneMonth'>
+              <h2 className="freeOneMonth">
                 첫달은 <br />
                 <span>무료로</span>
                 <br />
@@ -29,7 +25,7 @@ const SignUp = () => {
             </TextBox>
           </Wrap>
           <Button>
-            <Link to='/signupphone'>휴대폰 번호로 시작하기</Link>
+            <Link to="/signupphone">휴대폰 번호로 시작하기</Link>
           </Button>
           <OrText>⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼ 또는 ⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼</OrText>
           <SnsContainer>
@@ -42,7 +38,7 @@ const SignUp = () => {
             })}
           </SnsContainer>
           <MemberShipBox>
-            <Link to='/'>이미 회원이신가요? 로그인</Link>
+            <Link to="/login">이미 회원이신가요? 로그인</Link>
           </MemberShipBox>
         </LogoWrap>
       </LoginContainer>

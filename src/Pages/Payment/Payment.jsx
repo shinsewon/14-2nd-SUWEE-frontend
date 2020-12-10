@@ -21,7 +21,7 @@ const Payment = (props) => {
     const { success, error_msg } = response;
     if (success) {
       alert('결제 성공');
-      return props.history.push('/main');
+      return props.history.push('/SuweeMain');
     } else {
       alert(`${error_msg}`);
     }
