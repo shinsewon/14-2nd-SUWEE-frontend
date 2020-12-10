@@ -43,7 +43,7 @@ const BestSeller = () => {
   }, [keyword]);
 
   return (
-    <Slide width='1280px'>
+    <Slide width="1280px">
       <Category>
         지금 서점 베스트 셀러
         <SubCategory>
@@ -51,10 +51,7 @@ const BestSeller = () => {
             {BESTSELLER_SUBCATEGORY_DATA.map((tag) => (
               //클릭한 tag.name만 블랙으로
               //btnStatus = false, 클릭된 것만 ture
-              <Genre
-                key={tag.id}
-                onClick={() => changeCategory(tag.id)}
-                selected={tag.target === tag.idx ? '#222f3e' : null}>
+              <Genre key={tag.id} onClick={() => changeCategory(tag.id)} selected={tag.target === tag.idx ? '#222f3e' : null}>
                 {tag.name}
               </Genre>
             ))}
@@ -65,7 +62,7 @@ const BestSeller = () => {
         {bestSeller.map((tag, idx) => {
           return (
             <Item key={idx} onClick={handleClick}>
-              <img src={tag.image} alt='책' />
+              <img src={tag.image} alt="책" />
               <Title>{tag.title}</Title>
               <Author>{tag.author}</Author>
             </Item>
@@ -109,7 +106,6 @@ const Genre = styled.div`
   line-height: 35px;
   /* @include flexCenter; */
   ${({ theme }) => theme.flexCenter}
-  /* ${({ theme }) => console.log('확인 : ', theme.flexCenter)} */
   border: 1.5px solid #222f3e;
   border-radius: 20px;
   margin-right: 13px;
