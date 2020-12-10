@@ -1,27 +1,35 @@
-import React from 'react';
-import { LOGINIMAGES } from './data/data';
-import { KAKAO_API } from '../../config';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { LOGINIMAGES } from './data/data';
+import { KAKAO_API, SIGN_IN } from '../../config';
 import { flexCenter } from '../../Styles/CommonStyle';
 
 const Login = () => {
   const history = useHistory();
+
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [password, setPassword] = useState('');
+
+  console.log(`SIGN_IN : ${SIGN_IN}`);
+  //카카오톡 로그인
   const goToKakao = () => {
     Kakao.Auth.login({
       success: function (authObj) {
         fetch(`${KAKAO_API}`, {
           method: 'POST',
-          body: JSON.stringify({
-            access_token: authObj.access_token,
-          }),
+          headers: {
+            Authorization: authObj.access_token,
+          },
         })
           .then((res) => res.json())
           .then((res) => {
+            //카카오 응답 테스트 console.log
+            console.log('res : ', res);
             localStorage.setItem('Kakao_token', res.access_token);
             if (res.access_token) {
               alert('SUWEE의 서재에 오신걸 환영합니다!');
-              history.push('/main');
+              history.push('/signup');
             }
           });
       },
@@ -30,14 +38,30 @@ const Login = () => {
       },
     });
   };
-
-  const goToLogOut = () => {
-    if (Kakao.Auth.getAccessToken()) {
-      console.log('카카오 인증 액세스 토큰이 존재함', Kakao.Auth.getAccessToken());
-      Kakao.Auth.goToLogOut(() => {
-        console.log('로그아웃됨', Kakao.Auth.getAccessToken());
+  //휴대폰 번호로 로그인
+  const goToMain = (e) => {
+    e.preventDefault();
+    fetch(`${SIGN_IN}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phone_number: mobileNumber,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('백엔드 응답 : ', res);
+        if (res.access_token) {
+          localStorage.setItem('token', `${res.access_token}`);
+          alert('로그인에 성공하셨습니다.');
+          history.push('/main');
+        } else {
+          alert('휴대폰 번호 또는 비밀번호를 확인해주세요.');
+        }
       });
-    }
   };
   return (
     <StyleLogin>
@@ -55,9 +79,9 @@ const Login = () => {
               </div>
             </LogoBox>
           </Wrap>
-          <InputPhoneId type="number" placeholder="휴대폰 번호"></InputPhoneId>
-          <InputPassword type="password" placeholder="비밀번호"></InputPassword>
-          <Button>휴대폰 번호로 로그인</Button>
+          <InputPhoneId type="number" value={mobileNumber} placeholder="휴대폰 번호" onChange={(e) => setMobileNumber(e.target.value)}></InputPhoneId>
+          <InputPassword type="password" value={password} placeholder="비밀번호" onChange={(e) => setPassword(e.target.value)}></InputPassword>
+          <Button onClick={goToMain}>휴대폰 번호로 로그인</Button>
           <OrText>⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼ 또는 ⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼⎼</OrText>
           <SnsContainer>
             {LOGINIMAGES.map((img) => {

@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import styled from 'styled-components';
-// import { AiFillYoutube } from 'react-icons/ai';
-// import { AiFillInstagram } from 'react-icons/ai';
-// import { FaFacebookF } from 'react-icons/fa';
-// import { AiOutlineComment } from 'react-icons/ai';
+import { AiFillYoutube } from 'react-icons/ai';
+import { AiFillInstagram } from 'react-icons/ai';
+import { FaFacebookF } from 'react-icons/fa';
+import { AiOutlineComment } from 'react-icons/ai';
 import './Footer.scss';
 
 const FOOTERMENU = [
@@ -47,10 +47,18 @@ function Footer() {
           <div className='companyLogo'>(주)수위의 서재</div>
           <div className='snsBox'>
             <ul>
-              <li>{/* <AiFillYoutube /> */}</li>
-              <li>{/* <AiFillInstagram /> */}</li>
-              <li>{/* <FaFacebookF /> */}</li>
-              <li>{/* <AiOutlineComment /> */}</li>
+              <li>
+                <AiFillYoutube />
+              </li>
+              <li>
+                <AiFillInstagram />
+              </li>
+              <li>
+                <FaFacebookF />
+              </li>
+              <li>
+                <AiOutlineComment />
+              </li>
             </ul>
           </div>
         </div>
@@ -95,21 +103,22 @@ function CompanyInfo() {
 }
 
 const FooterBackground = styled.div`
-  /* width: 100%; */
-  height: 230px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  width: 100%;
+  height: 200px;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* left: 0; */
   display: flex;
   border-top: 1px solid #eee;
   justify-content: center;
   align-items: center;
+  background-color: white;
 `;
 
 const FooterContainer = styled.div`
   width: 1280px;
   max-width: 1280px;
-  height: 220px;
+  height: 200px;
   padding: 20px 13px 5px 13px;
   position: relative;
 `;
