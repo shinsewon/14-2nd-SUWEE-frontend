@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import styled from 'styled-components';
 import UserProfile from './UserProfile';
 import Nav from './../../Components/Nav/Nav';
 import Footer from './../../Components/Footer/Footer';
 import BookRoomTab from './../BookRoom/BookRoomTab/BookRoomTab';
-import styled from 'styled-components';
 
 const BookRoom = () => {
   return (
@@ -20,9 +18,8 @@ const BookRoom = () => {
 const BookRoomContainer = styled.div`
   margin-top: 64px;
   width: 100%;
-  display: flex;
+  ${({ theme }) => theme.flexCenter}
   flex-direction: column;
-  justify-content: center;
 `;
 
 export default BookRoom;
