@@ -24,8 +24,11 @@ const SignUp = () => {
               </h2>
             </TextBox>
           </Wrap>
+<<<<<<< HEAD
           <InputPhoneId type="number" placeholder="휴대폰 번호" />
           <InputPassword type="password" placeholder="비밀번호" />
+=======
+>>>>>>> 6466ff6... 회원가입 페이지 불필요한 inputbox 삭제완료
           <Button>
             <Link to="/signupphone">휴대폰 번호로 시작하기</Link>
           </Button>
@@ -91,6 +94,7 @@ const LogoWrap = styled.div`
 
 const Wrap = styled.div`
   height: 450px;
+  margin-bottom: 80px;
 `;
 
 const TextBox = styled.div`
