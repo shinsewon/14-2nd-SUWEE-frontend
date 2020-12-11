@@ -27,11 +27,13 @@ const Login = () => {
             if (!localStorage.Kakao_token) {
               localStorage.setItem('Kakao_token', res.access_token);
               if (res.access_token) {
+                console.log('카카오 res : ', res);
                 alert('SUWEE의 서재에 오신걸 환영합니다!');
                 history.push({ pathname: '/SuweeMain', state: { res } });
               }
             } else {
               alert('이미 로그인 되어 있습니다.');
+              console.log('카카오 이미 로그인 되어있는 res : ', res);
               history.push({ pathname: '/SuweeMain', state: { res } });
             }
           });
@@ -61,6 +63,7 @@ const Login = () => {
         if (res.access_token) {
           localStorage.setItem('token', `${res.access_token}`);
           alert('로그인에 성공하셨습니다.');
+          console.log('res : ', res);
           history.push({ pathname: '/SuweeMain', state: { res } });
         } else {
           alert('휴대폰 번호 또는 비밀번호를 확인해주세요.');
