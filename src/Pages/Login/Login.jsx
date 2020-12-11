@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { LOGINIMAGES } from './data/data';
 import { KAKAO_API, SIGN_IN } from '../../config';
@@ -7,11 +7,9 @@ import { flexCenter } from '../../Styles/CommonStyle';
 
 const Login = () => {
   const history = useHistory();
-
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState('');
 
-  console.log(`SIGN_IN : ${SIGN_IN}`);
   //카카오톡 로그인
   const goToKakao = () => {
     Kakao.Auth.login({
@@ -25,11 +23,16 @@ const Login = () => {
           .then((res) => res.json())
           .then((res) => {
             //카카오 응답 테스트 console.log
-            console.log('res : ', res);
-            localStorage.setItem('Kakao_token', res.access_token);
-            if (res.access_token) {
-              alert('SUWEE의 서재에 오신걸 환영합니다!');
-              history.push('/signup');
+            // console.log('res : ', res);
+            if (!localStorage.Kakao_token) {
+              localStorage.setItem('Kakao_token', res.access_token);
+              if (res.access_token) {
+                alert('SUWEE의 서재에 오신걸 환영합니다!');
+                history.push({ pathname: '/SuweeMain', state: { res } });
+              }
+            } else {
+              alert('이미 로그인 되어 있습니다.');
+              history.push({ pathname: '/SuweeMain', state: { res } });
             }
           });
       },
@@ -38,6 +41,7 @@ const Login = () => {
       },
     });
   };
+
   //휴대폰 번호로 로그인
   const goToMain = (e) => {
     e.preventDefault();
@@ -57,7 +61,7 @@ const Login = () => {
         if (res.access_token) {
           localStorage.setItem('token', `${res.access_token}`);
           alert('로그인에 성공하셨습니다.');
-          history.push('/main');
+          history.push({ pathname: '/SuweeMain', state: { res } });
         } else {
           alert('휴대폰 번호 또는 비밀번호를 확인해주세요.');
         }

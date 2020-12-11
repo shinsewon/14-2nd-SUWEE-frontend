@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import ViewBoxComponent from './Component/ViewBox';
 import TitleText from '../../Components/TitleText/TitleText';
 import SecondViewComponent from './Component/SecondView';
@@ -64,6 +65,14 @@ const LandingPage = () => {
   return (
     <StyleContainer>
       <ViewBoxComponent />
+      <Wrapper>
+        <Login>
+          <Link to="/login">로그인</Link>
+        </Login>
+        <Subscribe>
+          <Link to="/suweemain">메인 홈페이지</Link>
+        </Subscribe>
+      </Wrapper>
       <TitleText firstComment="독서의" colorComment="미래" secondComment="를" thirdComment="만들다" top="5%" left="45%" />
       {unSubscription && (
         <GoToMain onClick={goToSignUp}>
@@ -95,6 +104,38 @@ const Section = styled.section`
 
 const ViewBox = styled(Section)`
   height: 100%;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  text-align: center;
+  justify-content: center;
+  z-index: 100;
+  font-size: 13px;
+  font-weight: 700;
+`;
+
+const Login = styled.div`
+  width: 67px;
+  height: 29px;
+  border-radius: 20px;
+  padding-top: 7px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+`;
+
+const Subscribe = styled.div`
+  width: 95px;
+  height: 29px;
+  border-radius: 20px;
+  padding-top: 7px;
+  margin-left: 15px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 `;
 
 const StyleContainer = styled(Section)`

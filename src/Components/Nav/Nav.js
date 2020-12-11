@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FaRegBell } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -11,26 +11,27 @@ const pathList = [
   { id: 5, path: '/', content: '관리' },
 ];
 
-function Nav({ searchValue, setSearchValue, setSearchEnter }) {
+function Nav({ Token, searchValue, setSearchValue, setSearchEnter }) {
+  const history = useHistory();
   const [menu, setMenu] = useState(1);
 
-  //이 부분은 백엔드한테 정보를 다시 받아서 저장하고 책 필터 기능을 따로 리덕스를 써서 추가해야함
-  const searchBook = () => {
-    fetch('http://localhost:3000/find?');
+  const hadleLogout = () => {
+    localStorage.removeItem('Kakao_token');
+    localStorage.removeItem('token');
+    localStorage.removeItem('kakao_b87af1dbe3afc4e3342105079e466b18');
+    history.push('/login');
   };
 
-  //검색 버튼 엔터
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    setSearchEnter(true);
+  const handleLogin = () => {
+    history.push('/login');
   };
 
   return (
     <NavTop>
       <NavTopContainer>
         <Menu>
-          <Link to='/'>
-            <img src='./images/logo_dark.png' alt='수위의 서재 로고' />
+          <Link to="/">
+            <img src="./images/logo_dark.png" alt="수위의 서재 로고" />
           </Link>
           <ul>
             {pathList.map((tag, idx) => {
@@ -42,19 +43,18 @@ function Nav({ searchValue, setSearchValue, setSearchEnter }) {
             })}
           </ul>
         </Menu>
-        <SearchBox onSubmit={handleOnSubmit}>
-          <Search
-            value={searchValue}
-            placeholder='검색어를 입력해주세요.'
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+        <SearchBox
+        // onSubmit={handleOnSubmit}
+        >
+          <Search value={searchValue} placeholder="검색어를 입력해주세요." onChange={(e) => setSearchValue(e.target.value)} />
         </SearchBox>
         <UserSide>
-          <Notice notice='notice'>
+          <Notice notice="notice">
             <FaRegBell />
           </Notice>
           <Notice>
-            <BlackBtn>로그인</BlackBtn>
+            {!Token && <BlackBtn onClick={handleLogin}>로그인</BlackBtn>}
+            {Token && <BlackBtn onClick={hadleLogout}>로그아웃</BlackBtn>}
           </Notice>
         </UserSide>
       </NavTopContainer>
