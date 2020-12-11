@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import ViewBoxComponent from './Component/ViewBox';
-import TitleText from '../../Components/TitleText/TitleText';
-import SecondViewComponent from './Component/SecondView';
-import ThirdViewerComponent from './Component/ThirdView';
-import FourthViewerComponent from './Component/FourthView';
-import FifthViewerComponent from './Component/FifthView';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import ViewBoxComponent from "./Component/ViewBox";
+import TitleText from "../../Components/TitleText/TitleText";
+import SecondViewComponent from "./Component/SecondView";
+import ThirdViewerComponent from "./Component/ThirdView";
+import FourthViewerComponent from "./Component/FourthView";
+import FifthViewerComponent from "./Component/FifthView";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -31,8 +31,8 @@ const LandingPage = () => {
       }
     };
     useEffect(() => {
-      window.addEventListener('scroll', onScroll);
-      return () => window.removeEventListener('scroll', onScroll);
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
     }, []);
     return state;
   };
@@ -47,7 +47,7 @@ const LandingPage = () => {
   }, []);
 
   const getBookList = () => {
-    fetch('http://192.168.200.103:8000/books/randing_page')
+    fetch("http://192.168.200.103:8000/books/randing_page")
       .then((res) => res.json())
       .then((res) => setBooks(res.books));
     const bookSlice = [...books].slice(0, 40);
@@ -55,7 +55,7 @@ const LandingPage = () => {
   };
 
   const goToSignUp = () => {
-    history.push('/signup');
+    history.push("/signup");
   };
 
   useEffect(() => {
@@ -73,7 +73,14 @@ const LandingPage = () => {
           <Link to="/suweemain">메인 홈페이지</Link>
         </Subscribe>
       </Wrapper>
-      <TitleText firstComment="독서의" colorComment="미래" secondComment="를" thirdComment="만들다" top="5%" left="45%" />
+      <TitleText
+        firstComment="독서의"
+        colorComment="미래"
+        secondComment="를"
+        thirdComment="만들다"
+        top="5%"
+        left="45%"
+      />
       {unSubscription && (
         <GoToMain onClick={goToSignUp}>
           <div>첫달 무료 인생책 만나기</div>
@@ -165,15 +172,15 @@ const FourthViewer = styled.div`
   flex-direction: column;
   height: 100%;
 
-  background-color: ${(props) => (props.y > 3000 ? 'white' : '')};
-  animation-name: ${(props) => (props.y > 3000 ? 'example' : '')};
+  background-color: ${(props) => (props.y > 3000 ? "white" : "")};
+  animation-name: ${(props) => (props.y > 3000 ? "example" : "")};
   animation-duration: 2s;
   animation-fill-mode: forwards;
-  transition: all 200ms ${(props) => (props.y > 3000 ? 'ease-in' : 'ease-out')};
+  transition: all 200ms ${(props) => (props.y > 3000 ? "ease-in" : "ease-out")};
 
   @keyframes example {
     0% {
-      background-color: 'none';
+      background-color: "none";
     }
     25% {
       background-color: #999999;

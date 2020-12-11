@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const commonContainer = css`
   width: 700px;
@@ -7,7 +7,7 @@ export const commonContainer = css`
 
 export const clearFix = css`
   &::after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
@@ -38,11 +38,11 @@ export const font16 = css`
 `;
 
 export const theme = {
-  yellow: 'rgba(252, 235, 96, 1)',
-  purple: 'rgba(164, 81, 247, 1)',
-  boldPurple: '#6A31A4',
-  yellowOpacity: 'rgba(252, 235, 96, 0.5)',
-  purpleOpacity: 'rgba(164, 81, 247, 0.5)',
+  yellow: "rgba(252, 235, 96, 1)",
+  purple: "rgba(164, 81, 247, 1)",
+  boldPurple: "#6A31A4",
+  yellowOpacity: "rgba(252, 235, 96, 0.5)",
+  purpleOpacity: "rgba(164, 81, 247, 0.5)",
   commonContainer,
   clearFix,
   positionCenter,
@@ -52,3 +52,18 @@ export const theme = {
 };
 
 export default theme;
+export const componentGuide = css`
+  border-left: 1px solid #dfdfdf;
+  border-bottom: 12px solid #f7f7f7;
+`;
+
+export const boxShadow = css`
+  box-shadow: 12px 8px 24px rgba(0, 0, 0, 0.2), 4px 8px 8px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.24);
+`;
+
+export const line = css`
+  width: 1px;
+  height: 60%;
+  background-color: #e2e2e1;
+`;

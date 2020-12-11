@@ -1,15 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { LOGINIMAGES } from '../Login/data/data';
-import { flexCenter, theme } from '../../Styles/CommonStyle';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { LOGINIMAGES } from "../Login/data/data";
+import { flexCenter, theme } from "../../Styles/CommonStyle";
 
 const SignUp = () => {
   return (
     <StyleLogin>
       <BackgroundImgContainer>
         <LoginBoxContainer>
-          <img className="backgroundImg" src="/images/library2.jpg" alt="배경화면" />
+          <img
+            className="backgroundImg"
+            src="/images/library2.jpg"
+            alt="배경화면"
+          />
         </LoginBoxContainer>
       </BackgroundImgContainer>
       <LoginContainer>
@@ -103,7 +107,7 @@ const TextBox = styled.div`
   .freeOneMonth {
     color: white;
     font-size: 48px;
-    font-family: 'Noto Serif KR', serif;
+    font-family: "Noto Serif KR", serif;
     transform: rotate(-0.007turn);
 
     span {
