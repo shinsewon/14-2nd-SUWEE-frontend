@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FaRegBell } from 'react-icons/fa';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { FaRegBell } from "react-icons/fa";
+import styled from "styled-components";
 
 const pathList = [
-  { id: 1, path: '/main', content: '투데이' },
-  { id: 2, path: '/', content: '검색' },
-  { id: 3, path: '/', content: '피드' },
-  { id: 4, path: '/myBooks', content: '내서재' },
-  { id: 5, path: '/', content: '관리' },
+  { id: 1, path: "/main", content: "투데이" },
+  { id: 2, path: "/", content: "검색" },
+  { id: 3, path: "/", content: "피드" },
+  { id: 4, path: "/myBooks", content: "내서재" },
+  { id: 5, path: "/", content: "관리" },
 ];
 
 function Nav({ Token, searchValue, setSearchValue, setSearchEnter }) {
@@ -16,14 +16,14 @@ function Nav({ Token, searchValue, setSearchValue, setSearchEnter }) {
   const [menu, setMenu] = useState(1);
 
   const hadleLogout = () => {
-    localStorage.removeItem('Kakao_token');
-    localStorage.removeItem('token');
-    localStorage.removeItem('kakao_b87af1dbe3afc4e3342105079e466b18');
-    history.push('/login');
+    localStorage.removeItem("Kakao_token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("kakao_b87af1dbe3afc4e3342105079e466b18");
+    history.push("/login");
   };
 
   const handleLogin = () => {
-    history.push('/login');
+    history.push("/login");
   };
 
   return (
@@ -35,18 +35,37 @@ function Nav({ Token, searchValue, setSearchValue, setSearchEnter }) {
           </Link>
           <ul>
             {pathList.map((tag, idx) => {
-              return (
-                <MenuList key={idx} menu={menu} active={tag.id === menu}>
-                  {tag.content}
-                </MenuList>
-              );
+              if (tag.content === "내서재") {
+                return (
+                  <MenuList
+                    key={idx}
+                    menu={menu}
+                    active={tag.id === menu}
+                    onClick={() => {
+                      history.push("/BookRoom");
+                    }}
+                  >
+                    {tag.content}
+                  </MenuList>
+                );
+              } else {
+                return (
+                  <MenuList key={idx} menu={menu} active={tag.id === menu}>
+                    {tag.content}
+                  </MenuList>
+                );
+              }
             })}
           </ul>
         </Menu>
         <SearchBox
         // onSubmit={handleOnSubmit}
         >
-          <Search value={searchValue} placeholder="검색어를 입력해주세요." onChange={(e) => setSearchValue(e.target.value)} />
+          <Search
+            value={searchValue}
+            placeholder="검색어를 입력해주세요."
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
         </SearchBox>
         <UserSide>
           <Notice notice="notice">
@@ -112,7 +131,30 @@ const MenuList = styled.li`
   font-size: 20px;
   color: black;
   cursor: pointer;
-  font-weight: ${({ active }) => active && '600'};
+  font-weight: ${({ active }) => active && "600"};
+`;
+
+const SearchBox = styled.form``;
+
+const Search = styled.input`
+  width: 400px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    color: #cccccc;
+    padding-left: 10px;
+  }
 `;
 
 const SearchBox = styled.form``;
