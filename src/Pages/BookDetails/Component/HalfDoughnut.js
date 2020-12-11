@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Doughnut } from "react-chartjs-2";
-import styled from "styled-components";
-import { FIRST_API } from "../../../config";
+import React, { useState, useEffect } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+import styled from 'styled-components';
+import { FIRST_API } from '../../../config';
 
 function HalfDoughnut() {
   const [data, setData] = useState();
@@ -13,12 +13,12 @@ function HalfDoughnut() {
   }, []);
 
   const state = {
-    labels: ["완독 가능🙋🏻‍♀️", "완독 불가😭"],
+    labels: ['완독 가능🙋🏻‍♀️', '완독 불가😭'],
     datasets: [
       {
-        label: "Rainfall",
-        backgroundColor: ["#37b067", "#dfdfdf"],
-        hoverBackgroundColor: ["#37b067", "#dfdfdf"],
+        label: 'Rainfall',
+        backgroundColor: ['#37b067', '#dfdfdf'],
+        hoverBackgroundColor: ['#37b067', '#dfdfdf'],
         hoverBorderWidth: 3,
         borderWidth: 0,
         data: [43, 57],
@@ -34,7 +34,7 @@ function HalfDoughnut() {
     options: {
       legend: {
         display: true,
-        position: "right",
+        position: 'right',
       },
       rotation: 1 * Math.PI,
       circumference: 1 * Math.PI,

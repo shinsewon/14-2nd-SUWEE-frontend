@@ -22,6 +22,8 @@ function SuweeMain() {
   const [searchEnter, setSearchEnter] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
+  console.log('location.state : ', location.state);
+
   useEffect(() => {
     fetch(`${BOOK_LIST}`)
       .then((res) => res.json())
@@ -36,6 +38,10 @@ function SuweeMain() {
       setToken(location.state.res.access_token);
     }
   };
+
+  useEffect(() => {
+    renderToken();
+  }, []);
 
   return (
     <MainContainer>
@@ -54,12 +60,15 @@ function SuweeMain() {
       <CommingSoonBook />
       <Footer />
       <Popup>
-        <div>독서, 어렵지 않아요</div>
-        <div>
+        <Title>
+          <div>독서, 어렵지 않아요</div>
+          <img src="./images/delete.png" alt="delete" />
+        </Title>
+        <SubTitle>
           꼭 읽어야만 독서인가요?
           <br />
           독서 습관을 만드는 가장 쉬운 방법
-        </div>
+        </SubTitle>
         <Button
           onClick={() => {
             history.push('/payment');
@@ -83,25 +92,32 @@ const Popup = styled.div`
   width: 460px;
   height: 230px;
   background-color: rgba(0, 0, 0, 0.75);
+`;
+
+const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
 
   div {
-    &:first-child {
-      box-sizing: border-box;
-      height: 31px;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    &:last-child {
-      box-sizing: border-box;
-      font-size: 16px;
-      width: 100%;
-      font-size: 16px;
-      line-height: 24px;
-      letter-spacing: -0.4px;
-    }
+    box-sizing: border-box;
+    height: 31px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
   }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+const SubTitle = styled.div`
+  box-sizing: border-box;
+  font-size: 17px;
+  width: 100%;
+  line-height: 24px;
+  letter-spacing: -0.4px;
 `;
 
 const Button = styled.button`
@@ -114,6 +130,7 @@ const Button = styled.button`
   color: #242424;
   margin-top: 24px;
   font-size: 16px;
+  bottom: 0;
 
   span {
     font-weight: 700;
